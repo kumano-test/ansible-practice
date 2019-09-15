@@ -44,6 +44,8 @@ frontend  main *:{{ haproxy_port }}
 
 backend www
     balance     roundrobin
-    {% for host in groups['webservers'] %}
-    server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ nginx_port }}
-    {% endfor %}
+    server web1 web1.devops-book.local:8080
+    server web2 web2.devops-book.local:8080
+#    {% for host in groups['webservers'] %}
+#    server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ nginx_port }}
+#    {% endfor %}
